@@ -126,7 +126,7 @@ MAIN
 	BIC		R0, #0xFD				;clear all bits but input
 	LSR		R0, #1					
 	ADDS	R0, #0					;set flag=input
-	BNE		WAIT_1					
+	BEQ		WAIT_1					
 	BIC		R5, #0x01				;toggled to "ready to read" once PE1 is unpressed
 	B		WAIT_1
 ;
@@ -136,9 +136,9 @@ READY_TO_READ
 	BIC		R0, #0xFD				;clear all bits but input
 	LSR		R0, #1					
 	ADDS	R0, #0					;set flag=input
-	BEQ		WAIT_1					
+	BNE		WAIT_1					
 	ORR		R5, #0x01				;ups duty cycle, not ready to read
-	B		loop					
+	B		loop
 ;
 BREATHING
 ;called upon when PF4=0, exited when PF4=1
