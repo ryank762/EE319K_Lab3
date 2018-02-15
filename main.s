@@ -93,6 +93,7 @@ Start
 	MOV	R5, #0				;R5 is status register: 0=ready 1=not ready
 	MOV	R7, #10				;R7=10 always (used in BREATHING function)
 	MOV	R9, #0				;counter for BREATHING (reinitialized every loop)
+	B	WAIT_1				;skip initial duty increase (occurs later in the program)
      CPSIE  I    ; TExaS voltmeter, scope runs on interrupts
 loop  
 ; main engine goes here
